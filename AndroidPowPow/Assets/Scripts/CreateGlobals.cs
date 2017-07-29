@@ -21,7 +21,7 @@ public class CreateGlobals : MonoBehaviour {
 		if (Time.time > nextActionTime) {
 
 			nextActionTime += period;
-			batterChargeLevel -= 2;
+			batterChargeLevel -= 1;
 
 
 		}
