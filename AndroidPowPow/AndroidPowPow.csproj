@@ -78,8 +78,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\CreateGlobals.cs" />
+    <Compile Include="Assets\Scripts\EnemyBulletMovement.cs" />
+    <Compile Include="Assets\Scripts\EnemyMovement.cs" />
     <Compile Include="Assets\Scripts\PlayerLaserMove.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\UpdateCharge.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Animation\Animation_Controller\CreationFile.txt" />
