@@ -6,6 +6,7 @@ public class CreateGlobals : MonoBehaviour {
 
 	public static int enemyBulletSpeed = -3;
 	public static int playerLaserSpeed = 6;
+	public static int batterChargeLevel = 100;
 
 
 	// Use this for initialization

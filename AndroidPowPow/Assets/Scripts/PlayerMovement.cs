@@ -33,6 +33,7 @@ public class PlayerMovement : MonoBehaviour {
 
 			GameObject laserProj = (GameObject)Instantiate (Resources.Load ("PlayerLaser"));
 			laserProj.transform.position = rigBod.position;
+			CreateGlobals.batterChargeLevel -= 3;
 
 		}
 
