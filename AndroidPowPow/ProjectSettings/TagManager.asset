@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - BulletKill
+  - PlayerLaser
   layers:
   - Default
   - TransparentFX

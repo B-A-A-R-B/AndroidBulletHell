@@ -34,6 +34,13 @@ public class EnemyBulletMovement : MonoBehaviour {
 
 		if (collision.gameObject.tag == "BulletKill")
 			Destroy (this.gameObject);
+		if (collision.gameObject.tag == "Player") {
+
+			CreateGlobals.batterChargeLevel -= 20;
+			Destroy (this.gameObject);
+
+		}
+			
 
 	}
 }

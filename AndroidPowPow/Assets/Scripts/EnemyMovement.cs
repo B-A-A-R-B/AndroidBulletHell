@@ -10,6 +10,7 @@ public class EnemyMovement : MonoBehaviour {
 	protected int direction = 0;
 	protected int maxHight;
 	protected int maxWidth;
+	protected int health;
 	protected System.Random rand = new System.Random ();
 
 
@@ -18,6 +19,7 @@ public class EnemyMovement : MonoBehaviour {
 		rigBod = GetComponent<Rigidbody2D> ();
 		maxHight = 2 * ((int)Camera.main.orthographicSize);
 		maxWidth =((int) ( Camera.main.aspect * Camera.main.orthographicSize ));
+		health = 3;
 		//direction = rand.Next (0, 2);
 
 	}
@@ -73,7 +75,14 @@ public class EnemyMovement : MonoBehaviour {
 			}
 
 		}
+		if (health <= 0)
+			Destroy (this.gameObject);
 
+	}
+	void OnTriggerEnter2D (Collider2D collision) {
+
+		if (collision.gameObject.tag == "PlayerLaser")
+			health--;
 
 	}
 }

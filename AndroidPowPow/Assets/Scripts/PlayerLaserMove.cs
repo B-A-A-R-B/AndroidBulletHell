@@ -37,6 +37,8 @@ public class PlayerLaserMove : MonoBehaviour {
 	
 		if (collision.gameObject.tag == "BulletKill")
 			Destroy (this.gameObject);
+		if (collision.gameObject.tag == "Enemy")
+			Destroy (this.gameObject);
 
 	}
 }
