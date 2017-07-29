@@ -28,7 +28,7 @@ public class PlayerLaserMove : MonoBehaviour {
 
 	void FixedUpdate () {
 
-		trajec.x = 3; //new_proj;
+		trajec.x = CreateGlobals.playerLaserSpeed/2; //new_proj;
 		rigBod.position = rigBod.position + trajec;
 
 

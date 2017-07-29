@@ -24,7 +24,7 @@ public class EnemyBulletMovement : MonoBehaviour {
 	}
 	void FixedUpdate () {
 
-		trajec.x = -3;
+		trajec.x = CreateGlobals.enemyBulletSpeed / 2;
 		trajec = trajec / 2;
 		rigBod.position = rigBod.position + trajec;
 
