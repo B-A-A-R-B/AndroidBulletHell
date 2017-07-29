@@ -97,9 +97,6 @@
 -define:UNITY_EDITOR_WIN
 -define:ENABLE_NATIVE_ARRAY_CHECKS
 -define:UNITY_TEAM_LICENSE
-Assets/EnemyMovement.cs
-Assets/Scripts/CreateGlobals.cs
-Assets/Scripts/EnemyBulletMovement.cs
 Assets/Scripts/PlayerLaserMove.cs
 Assets/Scripts/PlayerMovement.cs
 -r:Z:\Unity\Editor\Data\Mono\lib\mono\unity\System.Runtime.Serialization.dll
