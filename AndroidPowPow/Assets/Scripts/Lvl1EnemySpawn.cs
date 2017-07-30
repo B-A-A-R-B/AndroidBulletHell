@@ -50,6 +50,9 @@ public class Lvl1EnemySpawn : MonoBehaviour {
 				comp2.direction = 1;
 				break;
 
+			case 2:
+				break;
+
 			default:
 				break;
 
