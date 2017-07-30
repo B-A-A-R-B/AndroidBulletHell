@@ -83,6 +83,12 @@ public class EnemyMovement : MonoBehaviour {
 
 		if (collision.gameObject.tag == "PlayerLaser")
 			health--;
+		if (collision.gameObject.tag == "Player") {
+
+			CreateGlobals.batterChargeLevel -= 50;
+			Destroy (this.gameObject);
+
+		}
 
 	}
 }
