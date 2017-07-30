@@ -51,11 +51,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\CentripBullet.cs" />
      <Compile Include="Assets\Scripts\CreateGlobals.cs" />
      <Compile Include="Assets\Scripts\EnemyBulletMovement.cs" />
+     <Compile Include="Assets\Scripts\EnemyCentrip.cs" />
      <Compile Include="Assets\Scripts\EnemyMovement.cs" />
      <Compile Include="Assets\Scripts\PlayerLaserMove.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\SineEnemy.cs" />
+     <Compile Include="Assets\Scripts\SineWaveBullet.cs" />
      <Compile Include="Assets\Scripts\UpdateCharge.cs" />
      <None Include="Assets\Scenes\CreationFile.txt" />
      <None Include="Assets\FrickinStupidUnity_HailTheFlames.txt" />

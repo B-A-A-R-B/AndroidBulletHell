@@ -11,6 +11,8 @@ public class CreateGlobals : MonoBehaviour {
 	public float period = 0.5f;
 
 	// Use this for initialization
+
+
 	void Start () {
 
 	}
