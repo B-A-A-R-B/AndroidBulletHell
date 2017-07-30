@@ -21,7 +21,10 @@ public class UpdateCharge : MonoBehaviour {
 
 	void FixedUpdate() {
 
-		chargeLabel.text = CreateGlobals.batterChargeLevel + "%";
 
+		if (CreateGlobals.batterChargeLevel <= 100)
+			chargeLabel.text = CreateGlobals.batterChargeLevel + "%";
+		else
+			chargeLabel.text = (CreateGlobals.deathCountDown/ 2).ToString();
 	}
 }

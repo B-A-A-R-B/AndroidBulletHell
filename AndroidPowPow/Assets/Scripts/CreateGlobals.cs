@@ -9,11 +9,15 @@ public class CreateGlobals : MonoBehaviour {
 	public static int batterChargeLevel = 100;
 	private float nextActionTime = 0.0f;
 	public float period = 0.5f;
+	public GameObject player;
+	public static int deathCountDown = 0;
 
 	// Use this for initialization
 
 
 	void Start () {
+		player = (GameObject)Instantiate (Resources.Load ("Player"));
+		player.transform.position = new Vector2 (-70, 0);
 
 	}
 
@@ -23,10 +27,25 @@ public class CreateGlobals : MonoBehaviour {
 		if (Time.time > nextActionTime) {
 
 			nextActionTime += period;
-			batterChargeLevel -= 1;
+
+			if (deathCountDown <= 1)
+				batterChargeLevel -= 1;
+			else {
+				deathCountDown--;
+				if (deathCountDown <= 1) {
+					player = (GameObject)Instantiate (Resources.Load ("Player"));
+					player.transform.position = new Vector2 (-70, 0);
+				}
+			}
+		}
+
+		if (batterChargeLevel <= 0) {
+			
+			Destroy (player);
+			batterChargeLevel = 101;
+			deathCountDown = 20;
 
 
 		}
-
 	}
 }
