@@ -7,9 +7,10 @@ public class EnemyMovement : MonoBehaviour {
 
 	// Use this for initialization
 	protected Rigidbody2D rigBod;
-	protected int direction = 0;
-	protected int maxHight;
-	protected int maxWidth;
+	public int direction = 0;
+	public int maxHight = 40;
+	public int maxLow = -40;
+	public int speed = 1;
 	protected int health;
 	protected System.Random rand = new System.Random ();
 	public string bulletType = "EnemyBullet"; 
@@ -32,8 +33,8 @@ public class EnemyMovement : MonoBehaviour {
 		attackRng += minFireTime;
 		nextActionTime += attackRng;
 		rigBod = GetComponent<Rigidbody2D> ();
-		maxHight = 2 * ((int)Camera.main.orthographicSize);
-		maxWidth =((int) ( Camera.main.aspect * Camera.main.orthographicSize ));
+		//maxHight = 2 * ((int)Camera.main.orthographicSize);
+		//maxWidth =((int) ( Camera.main.aspect * Camera.main.orthographicSize ));
 		health = 3;
 		//direction = rand.Next (0, 2);
 
@@ -66,13 +67,13 @@ public class EnemyMovement : MonoBehaviour {
 
 		if (direction == 1) {
 
-			if (rigBod.position.y >= (maxHight - 5)/ 2) {
+			if (rigBod.position.y >= maxHight - 5) {
 
 				direction = 0;
 
 			} else {
 
-				moving.y = 1;
+				moving.y = speed;
 				moving = moving / 2;
 				rigBod.position = rigBod.position + moving;
 			
@@ -81,13 +82,13 @@ public class EnemyMovement : MonoBehaviour {
 		}
 		if (direction == 0) {
 
-			if (rigBod.position.y <= ((-1 * (maxHight) ) + 5) /2) {
+			if (rigBod.position.y <= maxLow + 5) {
 
 				direction = 1;
 
 			} else {
 
-				moving.y = -1;
+				moving.y = -speed;
 				moving = moving / 2;
 				rigBod.position = rigBod.position + moving;
 

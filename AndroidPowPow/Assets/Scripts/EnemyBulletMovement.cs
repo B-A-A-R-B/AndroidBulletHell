@@ -7,10 +7,12 @@ public class EnemyBulletMovement : MonoBehaviour {
 	public Vector2 trajec;
 	public Rigidbody2D rigBod;
 	List<Collider> colliders = new List<Collider>();
-
+	protected float timed = 60f;
+	float startTime;
 	void OnEnable() {
 
 		rigBod = GetComponent<Rigidbody2D> ();
+
 
 	}
 	// Use this for initialization
@@ -20,7 +22,11 @@ public class EnemyBulletMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (startTime == 0)
+			startTime = Time.time;
+		if (Time.time > (timed + startTime))
+			Destroy (this.gameObject);
+
 	}
 	void FixedUpdate () {
 		trajec.x = CreateGlobals.enemyBulletSpeed / 2;

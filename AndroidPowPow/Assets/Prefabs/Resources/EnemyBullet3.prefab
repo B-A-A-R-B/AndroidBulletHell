@@ -91,9 +91,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trajec: {x: 0, y: 0}
   rigBod: {fileID: 0}
-  f: 0.009
+  f: -0.007
   sX: -15
-  sY: 30
+  sY: -15
 --- !u!212 &212882703259199758
 SpriteRenderer:
   m_ObjectHideFlags: 1

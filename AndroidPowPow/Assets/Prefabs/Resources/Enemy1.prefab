@@ -99,6 +99,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94eac0adcc9d8b44190fed28bfc79020, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  direction: 0
+  maxHight: 40
+  maxLow: -40
+  speed: 1
   bulletType: EnemyBullet
   maxFireTime: 2
   minFireTime: 1
