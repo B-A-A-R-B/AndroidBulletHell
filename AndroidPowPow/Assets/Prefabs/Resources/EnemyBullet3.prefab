@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114265844584457946}
   m_Layer: 0
   m_Name: EnemyBullet3
-  m_TagString: Enemy
+  m_TagString: Enemy Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -91,7 +91,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trajec: {x: 0, y: 0}
   rigBod: {fileID: 0}
-  f: 3
+  f: 0.009
+  sX: -15
+  sY: 30
 --- !u!212 &212882703259199758
 SpriteRenderer:
   m_ObjectHideFlags: 1
