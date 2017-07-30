@@ -28,8 +28,29 @@ public class Lvl1EnemySpawn : MonoBehaviour {
 				phaseNext = false;
 		
 		}
-		if (phaseNext)
+		if (phaseNext) {
 			phase++;
+
+			switch (phase) {
+
+			case 1:
+				GameObject[] enemNew = new GameObject[3];
+				enemNew [0] = (GameObject)Instantiate (Resources.Load ("Enemy1"));
+				enemNew [1] = (GameObject)Instantiate (Resources.Load ("EnemySine"));
+				enemNew [2] = (GameObject)Instantiate (Resources.Load ("EnemySine"));
+				for (int i = 0; i < 3; i++)
+					enemiesArray.Add (enemNew [i]);
+				enemiesArray [0].transform.position = new Vector2 (100, 0);
+				enemiesArray [1].transform.position = new Vector2 (110, 15);
+				enemiesArray [2].transform.position = new Vector2 (110, -15);
+				break;
+
+			default:
+				break;
+
+			}
+			
+		}
 
 	}
 
@@ -42,6 +63,20 @@ public class Lvl1EnemySpawn : MonoBehaviour {
 				enemiesArray [0].transform.position = ((Vector2)enemiesArray [0].transform.position) + (advanceEnemy / 4);
 
 		}
+		if (phase == 1) {
+
+			for (int i = 0; i < enemiesArray.Count; i++) {
+				if (enemiesArray [i] != null) {
+					if ((enemiesArray [i].transform.position.x) > 65 && i == 0)
+						enemiesArray [i].transform.position = ((Vector2)enemiesArray [i].transform.position) + (advanceEnemy / 4);
+					else if ((enemiesArray [i].transform.position.x) > 70)
+						enemiesArray [i].transform.position = ((Vector2)enemiesArray [i].transform.position) + (advanceEnemy / 4);
+				}
+			}
+		}
+			
+			//if ((enemiesArray [0].transform.position.x) > 75)
+				//enemiesArray [0].transform.position = ((Vector2)enemiesArray [0].transform.position) + (advanceEnemy / 4);
 
 	}
 }
