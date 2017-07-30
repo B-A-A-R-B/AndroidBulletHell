@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyBulletMovement : MonoBehaviour {
 
-	Vector2 trajec;
-	protected Rigidbody2D rigBod;
+	public Vector2 trajec;
+	public Rigidbody2D rigBod;
 	List<Collider> colliders = new List<Collider>();
 
 	void OnEnable() {
@@ -23,7 +23,6 @@ public class EnemyBulletMovement : MonoBehaviour {
 		
 	}
 	void FixedUpdate () {
-
 		trajec.x = CreateGlobals.enemyBulletSpeed / 2;
 		trajec = trajec / 2;
 		rigBod.position = rigBod.position + trajec;
