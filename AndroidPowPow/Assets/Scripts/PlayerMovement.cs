@@ -58,8 +58,13 @@ public class PlayerMovement : MonoBehaviour {
 		if( (Input.GetKey("right")) || (Input.GetKey("d")) )
 			moves.x += 2;
 	
-						
+		if (Mathf.Abs (moves.y + rigBod.position.y)	> 39)
+			moves.y -= (rigBod.position.y/ Mathf.Abs(rigBod.position.y)) * 2;
 		moves = moves / 2;
+		if (moves.x + rigBod.position.x	> 79)
+			moves.x = 0;
+		if (moves.x + rigBod.position.x < -79)
+			moves.x = 0;
 
 		Movement (moves);
 

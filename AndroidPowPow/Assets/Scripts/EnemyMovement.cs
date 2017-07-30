@@ -75,8 +75,13 @@ public class EnemyMovement : MonoBehaviour {
 			}
 
 		}
-		if (health <= 0)
+		if (health <= 0) {
+
+			GameObject batt = (GameObject)Instantiate (Resources.Load ("Batteries"));
+			batt.transform.position = rigBod.position;
 			Destroy (this.gameObject);
+
+		}
 
 	}
 	void OnTriggerEnter2D (Collider2D collision) {
@@ -84,10 +89,8 @@ public class EnemyMovement : MonoBehaviour {
 		if (collision.gameObject.tag == "PlayerLaser")
 			health--;
 		if (collision.gameObject.tag == "Player") {
-
 			CreateGlobals.batterChargeLevel -= 50;
-			Destroy (this.gameObject);
-
+			health = 0;
 		}
 
 	}

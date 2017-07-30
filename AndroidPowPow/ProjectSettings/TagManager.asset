@@ -8,6 +8,7 @@ TagManager:
   - BulletKill
   - PlayerLaser
   - Enemy Bullet
+  - Battery
   layers:
   - Default
   - TransparentFX
