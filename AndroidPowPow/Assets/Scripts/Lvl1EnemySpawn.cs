@@ -41,8 +41,8 @@ public class Lvl1EnemySpawn : MonoBehaviour {
 				for (int i = 0; i < 3; i++)
 					enemiesArray.Add (enemNew [i]);
 				enemiesArray [0].transform.position = new Vector2 (100, 0);
-				enemiesArray [1].transform.position = new Vector2 (110, 15);
-				enemiesArray [2].transform.position = new Vector2 (110, -15);
+				enemiesArray [1].transform.position = new Vector2 (110, 10);
+				enemiesArray [2].transform.position = new Vector2 (110, -10);
 				break;
 
 			default:
@@ -67,7 +67,7 @@ public class Lvl1EnemySpawn : MonoBehaviour {
 
 			for (int i = 0; i < enemiesArray.Count; i++) {
 				if (enemiesArray [i] != null) {
-					if ((enemiesArray [i].transform.position.x) > 65 && i == 0)
+					if ((enemiesArray [i].transform.position.x) > 60 && i == 0)
 						enemiesArray [i].transform.position = ((Vector2)enemiesArray [i].transform.position) + (advanceEnemy / 4);
 					else if ((enemiesArray [i].transform.position.x) > 70)
 						enemiesArray [i].transform.position = ((Vector2)enemiesArray [i].transform.position) + (advanceEnemy / 4);

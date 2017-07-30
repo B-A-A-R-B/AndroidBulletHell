@@ -99,6 +99,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c50d8a3369431c24d98d0322a731fee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletType: EnemyBullet2
+  maxFireTime: 2
+  minFireTime: 1
 --- !u!212 &212986239961148580
 SpriteRenderer:
   m_ObjectHideFlags: 1

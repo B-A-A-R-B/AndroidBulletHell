@@ -5,7 +5,7 @@ using UnityEngine;
 public class CreateGlobals : MonoBehaviour {
 
 	public static int enemyBulletSpeed = -3;
-	public static int playerLaserSpeed = 6;
+	public static int playerLaserSpeed = 9;
 	public static int batterChargeLevel = 100;
 	private float nextActionTime = 0.0f;
 	public float period = 0.5f;
