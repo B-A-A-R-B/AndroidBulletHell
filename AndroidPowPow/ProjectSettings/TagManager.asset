@@ -44,3 +44,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: skybox
+    uniqueID: 3410175435
+    locked: 0
+  - name: clouds
+    uniqueID: 2111660665
+    locked: 0
+  - name: background
+    uniqueID: 3715133409
+    locked: 0
+  - name: foreground
+    uniqueID: 2056850587
+    locked: 0
