@@ -53,6 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.1
+  reposition: 0
 --- !u!212 &212794003180201918
 SpriteRenderer:
   m_ObjectHideFlags: 1
