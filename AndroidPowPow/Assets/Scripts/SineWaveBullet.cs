@@ -20,9 +20,9 @@ public class SineWaveBullet : EnemyBulletMovement{
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	//void Update () {
 		
-	}
+	//}
 
 	void FixedUpdate () {
 		/*

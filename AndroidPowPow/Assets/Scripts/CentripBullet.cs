@@ -5,8 +5,8 @@ using UnityEngine;
 public class CentripBullet : EnemyBulletMovement {
 
 	public float f = 0.05f;
-	public float sX = -15f;
-	public float sY = 15f;
+	public float sX = 15f;
+	public float sY = -15f;
 	// Use this for initialization
 	void Start () {
 
@@ -15,10 +15,10 @@ public class CentripBullet : EnemyBulletMovement {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	//void Update () {
 		
 
-	}
+	//}
 
 	void FixedUpdate () {
 		float a = this.rigBod.velocity.x;
@@ -33,7 +33,7 @@ public class CentripBullet : EnemyBulletMovement {
 		} else
 			angel = Mathf.Atan( b / a );
 		float C = angel;
-		Debug.Log (C);
+		//Debug.Log (C);
 		//C += 10;
 		//this.rigBod.rotation = this.rigBod.rotation + f;
 		Vector2 newDir = Vector2FromAngle (C + f, a > 0 ? 30f : -30f);

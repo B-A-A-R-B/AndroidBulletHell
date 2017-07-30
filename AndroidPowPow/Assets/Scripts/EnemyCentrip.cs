@@ -6,18 +6,18 @@ public class EnemyCentrip : EnemyMovement {
 
 	// Use this for initialization
 	void Start () {
-		
+		bulletType = "EnemyBullet4";
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	//void Update () {
 
-		if ((Input.GetMouseButtonDown (1))) {
+		//if ((Input.GetMouseButtonDown (1))) {
 
-			GameObject bulletProj = (GameObject)Instantiate (Resources.Load ("EnemyBullet3"));
-			bulletProj.transform.position = rigBod.position;
+			//GameObject bulletProj = (GameObject)Instantiate (Resources.Load ("EnemyBullet3"));
+			//bulletProj.transform.position = rigBod.position;
 
-		}
+		//}
 
-	}
+	//}
 }

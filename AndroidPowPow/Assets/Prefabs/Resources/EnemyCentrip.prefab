@@ -99,7 +99,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28687dd68e545ee44984cf2830f67ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletType: EnemyBullet3
+  direction: 0
+  maxHight: 40
+  maxLow: -40
+  speed: 1
+  bulletType: EnemyBullet4
   maxFireTime: 1
   minFireTime: 0.5
 --- !u!212 &212641776462969956
@@ -131,8 +135,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1602465493
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 57c678566f2719e4283b19bf503a2067, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -32,7 +32,10 @@ public class PlayerMovement : MonoBehaviour {
 		if ((Input.GetMouseButtonDown (0))) {
 
 			GameObject laserProj = (GameObject)Instantiate (Resources.Load ("PlayerLaser"));
-			laserProj.transform.position = rigBod.position;
+			Vector2 muzzle = rigBod.position;
+			muzzle.x += 8;
+			muzzle.y += (13/12);
+			laserProj.transform.position = muzzle;
 			CreateGlobals.batterChargeLevel -= 3;
 
 		}
