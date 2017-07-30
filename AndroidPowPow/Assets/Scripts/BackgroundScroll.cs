@@ -25,6 +25,6 @@ public class BackgroundScroll : MonoBehaviour {
 	}
 
 	void OnBecameInvisible () {
-		this.transform.position = new Vector3 (reposition, 0);
+		this.transform.position = new Vector3 (repositiongit, 0);
 	}
 }
