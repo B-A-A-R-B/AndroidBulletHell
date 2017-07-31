@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyBulletMovement : MonoBehaviour {
 
 	public Vector2 trajec;
+	public float startY;
 	public Rigidbody2D rigBod;
 	List<Collider> colliders = new List<Collider>();
 	protected float timed = 60f;
@@ -29,10 +30,15 @@ public class EnemyBulletMovement : MonoBehaviour {
 
 	}
 	void FixedUpdate () {
-		trajec.x = CreateGlobals.enemyBulletSpeed / 2;
-		trajec = trajec / 2;
-		rigBod.position = rigBod.position + trajec;
-
+		//trajec.x = ((CreateGlobals.enemyBulletSpeed) - ((int)startY/5)) / 2;
+		//trajec.y = ((startY / 5) / 2);
+		//trajec = trajec / 2;
+		//rigBod.position = rigBod.position + trajec;
+		this.rigBod.velocity = new Vector2( 5 , startY);
+		rigBod.velocity = this.rigBod.velocity.normalized;
+		trajec.x = this.rigBod.velocity.x * CreateGlobals.enemyBulletSpeed;
+		trajec.y = this.rigBod.velocity.y * CreateGlobals.enemyBulletSpeed;
+		this.rigBod.velocity = trajec;
 
 	}
 	void OnTriggerEnter2D (Collider2D collision) {

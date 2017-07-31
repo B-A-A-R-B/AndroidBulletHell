@@ -49,6 +49,13 @@ public class Lvl1EnemySpawn : MonoBehaviour {
 			switch (phase) {
 
 			case 1:
+				GameObject bossNew = new GameObject ();
+				bossNew = (GameObject)Instantiate (Resources.Load ("BawseEnemy"));
+				enemiesArray.Add (bossNew);
+				enemiesArray [0].transform.position = new Vector2 (110, 0);
+				break;
+
+		/*	case 1:
 				GameObject[] enemNew = new GameObject[4];
 				enemNew [0] = (GameObject)Instantiate (Resources.Load ("Enemy1"));
 				enemNew [1] = (GameObject)Instantiate (Resources.Load ("EnemyCentrip"));
@@ -81,6 +88,7 @@ public class Lvl1EnemySpawn : MonoBehaviour {
 				for (int i = 0; i < 3; i++)
 					enemiesArray.Add (enemNew2 [i]);
 				enemiesArray [0].transform.position = new Vector2 (100, 0);
+				checkOne = enemiesArray [0].name;
 				EnemyMovement lomp0 = enemiesArray [0].GetComponent<EnemyMovement> ();
 				lomp0.maxFireTime = 0.1;
 				lomp0.minFireTime = 0.1;
@@ -93,7 +101,7 @@ public class Lvl1EnemySpawn : MonoBehaviour {
 				lomp2.direction = 1;
 				break;
 
-
+*/
 			default:
 				break;
 
@@ -129,7 +137,7 @@ public class Lvl1EnemySpawn : MonoBehaviour {
 
 			for (int i = 0; i < enemiesArray.Count; i++) {
 				if (enemiesArray [i] != null) {
-					if ((enemiesArray [i].transform.position.x) > 60 && i == 0)
+					if ((enemiesArray [i].transform.position.x) > 60 && (enemiesArray[i].name == checkOne))
 						enemiesArray [i].transform.position = ((Vector2)enemiesArray [i].transform.position) + (advanceEnemy / 4);
 					else if ((enemiesArray [i].transform.position.x) > 70)
 						enemiesArray [i].transform.position = ((Vector2)enemiesArray [i].transform.position) + (advanceEnemy / 4);

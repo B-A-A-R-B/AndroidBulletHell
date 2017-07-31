@@ -11,6 +11,7 @@ TagManager:
   - Battery
   - AudioManager
   - Explosion
+  - Bawse
   layers:
   - Default
   - TransparentFX
