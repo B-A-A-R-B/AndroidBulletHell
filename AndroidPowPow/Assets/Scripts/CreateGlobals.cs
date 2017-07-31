@@ -11,8 +11,9 @@ public class CreateGlobals : MonoBehaviour {
 	public static int batterChargeLevel = 100;
 	private float nextActionTime = 0.0f;
 	public float period = 0.5f;
-	public GameObject player;
+	public static GameObject player;
 	public static int deathCountDown = 0;
+	public static int bossHere = 0;
 	protected bool r;
 
 	// Use this for initialization
@@ -31,14 +32,17 @@ public class CreateGlobals : MonoBehaviour {
 		if ((r = Input.GetKey ("r") || Input.GetKeyDown ("r")) && deathCountDown >= 1) {
 			SceneManager.LoadScene ("Cityscape");
 			deathCountDown = 0;
+			bossHere = 0;
 		}
 
 		if (Time.time > nextActionTime) {
 
 			nextActionTime += period;
 
-			if (deathCountDown <= 1)
+			if (deathCountDown <= 1) {
+				deathCountDown = 0;
 				batterChargeLevel -= 1;
+			}
 			else {
 				deathCountDown--;
 				//if (r) {

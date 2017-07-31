@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour {
 
 	protected Vector2 moves;
 	protected Rigidbody2D rigBod;
+	public int maxX;
+	public int minX;
 	//public GameObject playerLaser;
 	protected ContactFilter2D cntcFltr;
 	protected RaycastHit2D[] hitBuffer = new RaycastHit2D[16];
@@ -64,10 +66,16 @@ public class PlayerMovement : MonoBehaviour {
 		if (Mathf.Abs (moves.y + rigBod.position.y)	> 39)
 			moves.y -= (rigBod.position.y/ Mathf.Abs(rigBod.position.y)) * 2;
 		moves = moves / 2;
-		if (moves.x + rigBod.position.x	> 79)
-			moves.x = 0;
-		if (moves.x + rigBod.position.x < -79)
-			moves.x = 0;
+		if(CreateGlobals.bossHere == 1)
+			if (moves.x + rigBod.position.x	> (maxX - 40))
+			moves.x = Mathf.Abs(moves.x) * -1;
+			if (moves.x + rigBod.position.x < minX)
+				moves.x = 0;
+		else
+			if (moves.x + rigBod.position.x	> (maxX))
+				moves.x = 0;
+			if (moves.x + rigBod.position.x < minX)
+				moves.x = 0;
 
 		Movement (moves);
 

@@ -100,7 +100,12 @@ public class Lvl1EnemySpawn : MonoBehaviour {
 				lomp2.maxHight = 0;
 				lomp2.direction = 1;
 				break;
-
+			case 3:
+				GameObject bossNew = new GameObject ();
+				bossNew = (GameObject)Instantiate (Resources.Load ("BawseEnemy"));
+				enemiesArray.Add (bossNew);
+				enemiesArray [0].transform.position = new Vector2 (110, 0);
+				break;
 */
 			default:
 				break;
