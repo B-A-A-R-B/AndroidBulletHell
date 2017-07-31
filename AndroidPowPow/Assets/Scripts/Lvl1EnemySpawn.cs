@@ -81,6 +81,9 @@ public class Lvl1EnemySpawn : MonoBehaviour {
 				for (int i = 0; i < 3; i++)
 					enemiesArray.Add (enemNew2 [i]);
 				enemiesArray [0].transform.position = new Vector2 (100, 0);
+				EnemyMovement lomp0 = enemiesArray [0].GetComponent<EnemyMovement> ();
+				lomp0.maxFireTime = 0.1;
+				lomp0.minFireTime = 0.1;
 				enemiesArray [1].transform.position = new Vector2 (110, 10);
 				EnemyMovement lomp1 = enemiesArray [1].GetComponent<EnemyMovement> ();
 				lomp1.maxLow = 0;
