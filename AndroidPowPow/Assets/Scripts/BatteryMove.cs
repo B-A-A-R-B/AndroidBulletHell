@@ -21,7 +21,7 @@ public class BatteryMove : MonoBehaviour {
 	}
 	void FixedUpdate () {
 		trajec.x = CreateGlobals.enemyBulletSpeed;
-		trajec = trajec / 4;
+		trajec = trajec / 25;
 		rigBod.position = rigBod.position + trajec;
 
 

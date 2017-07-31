@@ -6,7 +6,7 @@ public class SineWaveBullet : EnemyBulletMovement{
 	protected int startY;
 	protected int startD = -1;
 	public float r = 10f;
-	private float count = 0f;
+	public float count = 0f;
 	public float f = 10f;
 	// Use this for initialization
 	void Start () {

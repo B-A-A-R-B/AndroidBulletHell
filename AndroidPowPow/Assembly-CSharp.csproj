@@ -54,6 +54,7 @@
      <Compile Include="Assets\Scripts\AudioManager.cs" />
      <Compile Include="Assets\Scripts\BackgroundScroll.cs" />
      <Compile Include="Assets\Scripts\BatteryMove.cs" />
+     <Compile Include="Assets\Scripts\BawseAttackPttrns.cs" />
      <Compile Include="Assets\Scripts\CentripBullet.cs" />
      <Compile Include="Assets\Scripts\CreateGlobals.cs" />
      <Compile Include="Assets\Scripts\DualCentrip.cs" />

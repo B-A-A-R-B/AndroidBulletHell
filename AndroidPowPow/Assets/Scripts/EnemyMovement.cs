@@ -96,8 +96,8 @@ public class EnemyMovement : MonoBehaviour {
 		}
 		if (health <= 0) {
 			AudioManager.Manager.Play ("Explosion");
-			GameObject batt = (GameObject)Instantiate (Resources.Load ("Batteries"));
-			batt.transform.position = rigBod.position;
+			//GameObject batt = (GameObject)Instantiate (Resources.Load ("Batteries"));
+			//batt.transform.position = rigBod.position;
 			Destroy (this.gameObject);
 
 		}
@@ -108,6 +108,11 @@ public class EnemyMovement : MonoBehaviour {
 		if (collision.gameObject.tag == "PlayerLaser") {
 			AudioManager.Manager.Play ("Enemy");
 			health--;
+			if (health <= 0) {
+				GameObject batt = (GameObject)Instantiate (Resources.Load ("Batteries"));
+				batt.transform.position = rigBod.position;
+		
+			}
 		}
 		if (collision.gameObject.tag == "Player") {
 			CreateGlobals.batterChargeLevel -= 50;
