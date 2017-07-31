@@ -90,8 +90,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trajec: {x: 0, y: 0}
+  startY: 0
   rigBod: {fileID: 0}
   r: 0.1
+  count: 0
   f: 50
 --- !u!212 &212081788838511592
 SpriteRenderer:

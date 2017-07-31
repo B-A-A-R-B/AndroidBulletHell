@@ -8,8 +8,11 @@ public class BawseAttackPttrns : MonoBehaviour {
 	public int startYNorm;
 	private float nextActionTime;
 	public float period = 0.5f;
-	private int oneTwo = -1;
+	private int oneTwo = 0;
 	private int waveAttackY = 0;
+	private int health = 15;
+	private int lives = 4;
+	private System.Random rand = new System.Random();
 	// Use this for initialization
 	void Start () {
 		nextActionTime = Time.time;
@@ -26,23 +29,33 @@ public class BawseAttackPttrns : MonoBehaviour {
 		//attackPttrnThree (waveAttackY);
 		if (nextActionTime <= Time.time) {
 			nextActionTime += period;
-			waveAttackY = (((waveAttackY + 15) + 2) % 30) - 15;
-			attackPttrnThree (waveAttackY + 20, false);
-			attackPttrnThree ((waveAttackY + 20) * -1, true);
-			//attackPttrnTwo ();
-			switch (oneTwo) {
 
-			case 0:
-				attackPttrnOne ();
-				oneTwo = 1;
-				break;
-			case 1:
-				attackPttrnTwo ();
-				oneTwo = 0;
-				break;
-			default:
-				oneTwo = -1;
-				break;
+			//attackPttrnTwo ();
+			if(rigBod.position.x <= 58) 
+				switch (lives) {
+
+				case 0:
+					AudioManager.Manager.Play ("Explosion");
+					Destroy (this.gameObject);
+					break;
+				case 1:
+					waveAttackY = (((waveAttackY + 15) + 2) % 30) - 15;
+					attackPttrnThree (waveAttackY + 20, false);
+					attackPttrnThree ((waveAttackY + 20) * -1, true);
+					oneTwo = 0;
+					break;
+				case 2:
+					attackPttrnFour ();
+					break;
+				case 3:
+					attackPttrnOne ();
+					break;
+				case 4:
+					attackPttrnTwo ();
+					break;
+				default:
+					oneTwo = -1;
+					break;
 
 			}
 		}
@@ -92,5 +105,37 @@ public class BawseAttackPttrns : MonoBehaviour {
 		if (!neg)
 			bulletType.f *= -1;
 	
+	}
+	void attackPttrnFour (){
+		switch (oneTwo) {
+		case 0:
+			attackPttrnOne ();
+			oneTwo = 1;
+			break;
+		case 1:
+			attackPttrnTwo ();
+			oneTwo = 0;
+			break;
+		default:
+			oneTwo = -1;
+			break;
+		}
+	}
+	void OnTriggerEnter2D (Collider2D collision) {
+
+		if (collision.gameObject.tag == "PlayerLaser" && rigBod.position.x <= 58) {
+			AudioManager.Manager.Play ("Enemy");
+			health--;
+			if (health <= 0) {
+				lives--;
+				health = 15;
+				GameObject batt = (GameObject)Instantiate (Resources.Load ("Batteries"));
+				if (CreateGlobals.player != null) {
+					Vector2 battSpawn = new Vector2 (rigBod.position.x, CreateGlobals.player.transform.position.y);
+					batt.transform.position = battSpawn;
+				}
+
+			}
+		}
 	}
 }

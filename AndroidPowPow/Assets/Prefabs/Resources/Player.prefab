@@ -100,6 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minGroundNormalY: 0.65
+  maxX: 79
+  minX: -79
 --- !u!212 &212600135061730492
 SpriteRenderer:
   m_ObjectHideFlags: 1
