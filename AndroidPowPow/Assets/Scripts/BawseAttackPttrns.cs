@@ -10,14 +10,21 @@ public class BawseAttackPttrns : MonoBehaviour {
 	public float period = 0.5f;
 	private int oneTwo = 0;
 	private int waveAttackY = 0;
-	private int health = 15;
+	private int healthMax = 20;
+	private int health;
 	private int lives = 4;
+	private bool invul = true;
+	private bool started = false;
 	private System.Random rand = new System.Random();
+	private SpriteRenderer bawseFace;
 	// Use this for initialization
 	void Start () {
 		nextActionTime = Time.time;
 		rigBod = GetComponent<Rigidbody2D> ();
+		bawseFace = GetComponent<SpriteRenderer> ();
+		bawseFace.color = new Color (0f, 0f, 0f, 0.5f);
 		CreateGlobals.bossHere = 1;
+		health = healthMax;
 		//PlayerMovement playerBox = CreateGlobals.player.GetComponent<PlayerMovement>();
 		//playerBox.maxX = playerBox.maxX - 20;
 
@@ -29,9 +36,12 @@ public class BawseAttackPttrns : MonoBehaviour {
 		//attackPttrnThree (waveAttackY);
 		if (nextActionTime <= Time.time) {
 			nextActionTime += period;
-
+			if (started) {
+				invul = false;
+				bawseFace.color = new Color (1f, 1f, 1f, 1f);
+			}
 			//attackPttrnTwo ();
-			if(rigBod.position.x <= 58) 
+			if(rigBod.position.x <= 58)
 				switch (lives) {
 
 				case 0:
@@ -59,6 +69,12 @@ public class BawseAttackPttrns : MonoBehaviour {
 
 			}
 		}
+		if (!started && (rigBod.position.x <= 58)) {
+			invul = false;
+			bawseFace.color = new Color (1f, 1f, 1f, 1f);
+			started = true;
+		}
+
 	}
 
 	void attackPttrnOne () {
@@ -123,16 +139,19 @@ public class BawseAttackPttrns : MonoBehaviour {
 	}
 	void OnTriggerEnter2D (Collider2D collision) {
 
-		if (collision.gameObject.tag == "PlayerLaser" && rigBod.position.x <= 58) {
+		if (collision.gameObject.tag == "PlayerLaser" && !invul) {
 			AudioManager.Manager.Play ("Enemy");
 			health--;
 			if (health <= 0) {
 				lives--;
-				health = 15;
+				health = healthMax;
 				GameObject batt = (GameObject)Instantiate (Resources.Load ("Batteries"));
 				if (CreateGlobals.player != null) {
 					Vector2 battSpawn = new Vector2 (rigBod.position.x, CreateGlobals.player.transform.position.y);
+					bawseFace.color = new Color (1f, 1f, 1f, 0.5f);
 					batt.transform.position = battSpawn;
+					nextActionTime += (period * 12);
+					invul = true;
 				}
 
 			}
