@@ -40,12 +40,15 @@ public class CreateGlobals : MonoBehaviour {
 		}
 
 		if (batterChargeLevel <= 0) {
-			
+			AudioManager.Manager.Play ("Explosion");
 			Destroy (player);
 			batterChargeLevel = 101;
 			deathCountDown = 20;
 
 
 		}
+	}
+
+	void PlaySE() {
 	}
 }

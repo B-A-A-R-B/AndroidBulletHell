@@ -41,8 +41,7 @@ public class EnemyMovement : MonoBehaviour {
 	}
 
 	void Start () {
-
-
+		
 	}
 	
 	// Update is called once per frame
@@ -96,7 +95,7 @@ public class EnemyMovement : MonoBehaviour {
 
 		}
 		if (health <= 0) {
-
+			AudioManager.Manager.Play ("Explosion");
 			GameObject batt = (GameObject)Instantiate (Resources.Load ("Batteries"));
 			batt.transform.position = rigBod.position;
 			Destroy (this.gameObject);
@@ -106,8 +105,10 @@ public class EnemyMovement : MonoBehaviour {
 	}
 	void OnTriggerEnter2D (Collider2D collision) {
 
-		if (collision.gameObject.tag == "PlayerLaser")
+		if (collision.gameObject.tag == "PlayerLaser") {
+			AudioManager.Manager.Play ("Enemy");
 			health--;
+		}
 		if (collision.gameObject.tag == "Player") {
 			CreateGlobals.batterChargeLevel -= 50;
 			health = 0;

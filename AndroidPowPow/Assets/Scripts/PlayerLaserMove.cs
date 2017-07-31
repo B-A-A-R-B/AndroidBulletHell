@@ -9,7 +9,6 @@ public class PlayerLaserMove : MonoBehaviour {
 	int new_proj = 0;
 	protected Rigidbody2D rigBod;
 	List<Collider> colliders = new List<Collider>();
-
 	// Use this for initialization
 	void OnEnable() {
 
@@ -18,12 +17,12 @@ public class PlayerLaserMove : MonoBehaviour {
 	}
 
 	void Start () {
-		
+		AudioManager.Manager.Play ("PlayerLaser");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
+		
 	}
 
 	void FixedUpdate () {

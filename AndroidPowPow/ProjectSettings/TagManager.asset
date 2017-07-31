@@ -9,6 +9,8 @@ TagManager:
   - PlayerLaser
   - Enemy Bullet
   - Battery
+  - AudioManager
+  - Explosion
   layers:
   - Default
   - TransparentFX

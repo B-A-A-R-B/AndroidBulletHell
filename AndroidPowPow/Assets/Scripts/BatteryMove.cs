@@ -31,7 +31,7 @@ public class BatteryMove : MonoBehaviour {
 		if (collision.gameObject.tag == "BulletKill")
 			Destroy (this.gameObject);
 		if (collision.gameObject.tag == "Player") {
-
+			AudioManager.Manager.Play ("Battery");
 			CreateGlobals.batterChargeLevel = 100;
 			Destroy (this.gameObject);
 
