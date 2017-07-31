@@ -32,7 +32,7 @@ public class UpdateCharge : MonoBehaviour {
 			chargeLabel.text = "";
 			energyBar.rectTransform.sizeDelta = new Vector2 ((float)CreateGlobals.batterChargeLevel / 100 * bar_max_width, energyBar.rectTransform.sizeDelta.y);
 		} else {
-			chargeLabel.text = (CreateGlobals.deathCountDown / 2).ToString ();
+			chargeLabel.text = (CreateGlobals.deathCountDown / 2).ToString () + "\n Press R to Restart";
 			energyBar.rectTransform.sizeDelta = new Vector2 (0f, energyBar.rectTransform.sizeDelta.y);
 		}
 		
