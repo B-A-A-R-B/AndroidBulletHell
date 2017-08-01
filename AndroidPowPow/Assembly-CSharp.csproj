@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\AddColorTitle.cs" />
      <Compile Include="Assets\Scripts\AudioManager.cs" />
      <Compile Include="Assets\Scripts\BackgroundScroll.cs" />
      <Compile Include="Assets\Scripts\BatteryMove.cs" />
@@ -64,6 +65,7 @@
      <Compile Include="Assets\Scripts\Lvl1EnemySpawn.cs" />
      <Compile Include="Assets\Scripts\PlayerLaserMove.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\ReturnOnAnyKey.cs" />
      <Compile Include="Assets\Scripts\SineEnemy.cs" />
      <Compile Include="Assets\Scripts\SineWaveBullet.cs" />
      <Compile Include="Assets\Scripts\StartGame.cs" />

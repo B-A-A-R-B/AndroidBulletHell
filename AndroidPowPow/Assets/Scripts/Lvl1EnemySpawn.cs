@@ -53,8 +53,8 @@ public class Lvl1EnemySpawn : MonoBehaviour {
 				bossNew = (GameObject)Instantiate (Resources.Load ("BawseEnemy"));
 				enemiesArray.Add (bossNew);
 				enemiesArray [0].transform.position = new Vector2 (110, 0);
-				break;
-*/
+				break; */
+
 			case 1:
 				GameObject[] enemNew = new GameObject[4];
 				enemNew [0] = (GameObject)Instantiate (Resources.Load ("Enemy1"));
@@ -78,7 +78,7 @@ public class Lvl1EnemySpawn : MonoBehaviour {
 				EnemyMovement comp4 = enemiesArray [3].GetComponent<EnemyMovement> ();
 				comp4.maxHight = 0;
 				comp4.direction = 1;
-				break;
+				break; 
 
 			case 2:
 				GameObject[] enemNew2 = new GameObject[3];

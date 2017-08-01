@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BawseAttackPttrns : MonoBehaviour {
 	Rigidbody2D rigBod;
@@ -47,6 +48,7 @@ public class BawseAttackPttrns : MonoBehaviour {
 				case 0:
 					AudioManager.Manager.Play ("Explosion");
 					Destroy (this.gameObject);
+					SceneManager.LoadScene ("WinScene");
 					break;
 				case 1:
 					waveAttackY = (((waveAttackY + 15) + 2) % 30) - 15;
