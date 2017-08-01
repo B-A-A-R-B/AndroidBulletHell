@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour {
 
@@ -48,7 +49,8 @@ public class PlayerMovement : MonoBehaviour {
 
 		moves = Vector2.zero;
 
-
+		if (Input.GetKey ("escape") || Input.GetKeyDown ("escape"))
+			SceneManager.LoadScene ("MainMenu");
 
 		if( Input.GetKey("up") || Input.GetKey("w") )
 			moves.y += 2;
