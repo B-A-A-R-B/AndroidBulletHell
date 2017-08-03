@@ -7,7 +7,7 @@ public class EnemyBulletMovement : MonoBehaviour {
 	public Vector2 trajec;
 	public float startY;
 	public Rigidbody2D rigBod;
-	List<Collider> colliders = new List<Collider>();
+	//List<Collider> colliders = new List<Collider>();
 	protected float timed = 60f;
 	float startTime;
 	void OnEnable() {
@@ -45,12 +45,16 @@ public class EnemyBulletMovement : MonoBehaviour {
 
 		if (collision.gameObject.tag == "BulletKill")
 			Destroy (this.gameObject);
-		if (collision.gameObject.tag == "Player") {
+		if (collision.gameObject.tag == "Player" && !CreateGlobals.playerInvul) {
 			AudioManager.Manager.Play ("Player");
-			CreateGlobals.batterChargeLevel -= 20;
+			CreateGlobals.batterChargeLevel -= 25;
 			Destroy (this.gameObject);
+			CreateGlobals.playerInvul = true;
+			CreateGlobals.sprRndrPlayer.color = new Color (1f, 1f, 1f, 0.5f);
+			CreateGlobals.playerNotInvul = Time.time + 1f;
 
-		}
+		} else if(collision.gameObject.tag == "Player")
+			Destroy (this.gameObject);
 			
 
 	}

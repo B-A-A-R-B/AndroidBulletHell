@@ -7,13 +7,15 @@ public class BawseAttackPttrns : MonoBehaviour {
 	Rigidbody2D rigBod;
 	public int startYCent;
 	public int startYNorm;
+	private float startYMod = 0f;
+	private bool yUp = false;
 	private float nextActionTime;
 	public float period = 0.5f;
 	private int oneTwo = 0;
 	private int waveAttackY = 0;
-	private int healthMax = 20;
+	private int healthMax = 15;
 	private int health;
-	private int lives = 4;
+	private int lives = 8;
 	private bool invul = true;
 	private bool started = false;
 	private System.Random rand = new System.Random();
@@ -43,7 +45,7 @@ public class BawseAttackPttrns : MonoBehaviour {
 			}
 			//attackPttrnTwo ();
 			if(rigBod.position.x <= 58)
-				switch (lives) {
+				switch ((int)(lives)) {
 
 				case 0:
 					AudioManager.Manager.Play ("Explosion");
@@ -57,12 +59,30 @@ public class BawseAttackPttrns : MonoBehaviour {
 					oneTwo = 0;
 					break;
 				case 2:
-					attackPttrnFour ();
+					waveAttackY = (((waveAttackY + 15) + 2) % 30) - 15;
+					attackPttrnThree (waveAttackY + 20, false);
+					attackPttrnThree ((waveAttackY + 20) * -1, true);
+					oneTwo = 0;
 					break;
 				case 3:
-					attackPttrnOne ();
+					startYMod = 0f;
+					attackPttrnFour ();
 					break;
 				case 4:
+					startYMod = 0f;
+					attackPttrnFour ();
+					break;
+				case 5:
+					attackPttrnOne ();
+					break;
+				case 6:
+					attackPttrnOne ();
+					break;
+				case 7:
+					attackPttrnTwo ();
+					break;
+				case 8:
+					startYMod = 0f;
 					attackPttrnTwo ();
 					break;
 				default:
@@ -103,11 +123,19 @@ public class BawseAttackPttrns : MonoBehaviour {
 			bulletProj[i] = (GameObject) Instantiate(Resources.Load("EnemyBullet"));
 			bulletProj [i].transform.position = rigBod.position;
 			bulletType [i] = bulletProj [i].GetComponent<EnemyBulletMovement> ();
-			bulletType [i].startY = startYNorm * ((i + 1)/2);
+			bulletType [i].startY = (startYNorm * ((i + 1)/2)) + (startYMod * startYNorm);
 			bulletProj[i + 1] = (GameObject) Instantiate(Resources.Load("EnemyBullet"));
 			bulletProj [i + 1].transform.position = rigBod.position;
 			bulletType [i + 1] = bulletProj [i + 1].GetComponent<EnemyBulletMovement> ();
-			bulletType [i + 1].startY = startYNorm * ((i + 1)/ 2) * -1;
+			bulletType [i + 1].startY = (startYNorm * ((i + 1)/ 2) * -1) + (startYMod * startYNorm);
+			if(yUp)
+				startYMod += 0.2f ;
+			else
+				startYMod -= 0.2f;
+			if ((yUp && startYMod >= 6) || (!yUp && startYMod <= -6))
+				yUp = !yUp;
+			//Debug.Log(startYMod);
+
 			//startY += startY;
 
 		}

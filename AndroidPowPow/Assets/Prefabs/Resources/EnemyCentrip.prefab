@@ -104,8 +104,8 @@ MonoBehaviour:
   maxLow: -40
   speed: 1
   bulletType: EnemyBullet4
-  maxFireTime: 0.2
-  minFireTime: 0.2
+  maxFireTime: 0.3
+  minFireTime: 0.3
 --- !u!212 &212641776462969956
 SpriteRenderer:
   m_ObjectHideFlags: 1

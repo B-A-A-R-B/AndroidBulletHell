@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	protected Vector2 moves;
 	protected Rigidbody2D rigBod;
+	//public SpriteRenderer sprRndr;
 	public int maxX;
 	public int minX;
 	//public GameObject playerLaser;
@@ -23,6 +24,8 @@ public class PlayerMovement : MonoBehaviour {
 	void OnEnable() {
 
 		rigBod = GetComponent<Rigidbody2D> ();
+
+		//sprRndr = GetComponent<SpriteRenderer> ();
 
 	}
 	void Start () {

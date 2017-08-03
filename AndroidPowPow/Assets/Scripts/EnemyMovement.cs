@@ -19,6 +19,9 @@ public class EnemyMovement : MonoBehaviour {
 	public double minFireTime = 1.5;
 	private double nextActionTime = 0.0;
 	private double enemyIndex;
+	private bool invul;
+	private float posLast;
+	private SpriteRenderer sprRndr;
 	//public double periode = 0;
 
 
@@ -33,9 +36,13 @@ public class EnemyMovement : MonoBehaviour {
 		attackRng += minFireTime;
 		nextActionTime += attackRng;
 		rigBod = GetComponent<Rigidbody2D> ();
+		sprRndr = GetComponent<SpriteRenderer> ();
 		//maxHight = 2 * ((int)Camera.main.orthographicSize);
 		//maxWidth =((int) ( Camera.main.aspect * Camera.main.orthographicSize ));
 		health = 3;
+		invul = true;
+		posLast = 400f;
+		sprRndr.color = new Color (1f, 1f, 1f, 0.5f);
 		//direction = rand.Next (0, 2);
 
 	}
@@ -49,12 +56,20 @@ public class EnemyMovement : MonoBehaviour {
 
 		//attackRng = ((rand.Next(0,51)) /100) + 0.5;
 
-		if (Time.time > (nextActionTime + attackRng)) {  //(Input.GetMouseButtonDown (1))) {
+		if (Time.time > (nextActionTime + attackRng) && !invul) {  //(Input.GetMouseButtonDown (1))) {
 			int range = (int)((maxFireTime - minFireTime) * 100);
-			attackRng = ((rand.Next(0 ,range)) /100) + minFireTime;
+			attackRng = ((rand.Next (0, range)) / 100) + minFireTime;
 			nextActionTime += attackRng;
 			GameObject bulletProj = (GameObject)Instantiate (Resources.Load (bulletType));
 			bulletProj.transform.position = rigBod.position;
+			sprRndr.color = new Color (1f, 1f, 1f, 1f);
+
+		} else if (Time.time > (nextActionTime + attackRng)) {
+
+			int range = (int)((maxFireTime - minFireTime) * 100);
+			attackRng = ((rand.Next (0, range)) / 100) + minFireTime;
+			nextActionTime += attackRng;
+			//sprRndr.color = new Color (1f, 1f, 1f, 0.5f);
 
 		}
 
@@ -63,6 +78,11 @@ public class EnemyMovement : MonoBehaviour {
 	void FixedUpdate() {
 
 		Vector2 moving = Vector2.zero;
+
+		if (invul && posLast == rigBod.position.x)
+			invul = false;
+
+		posLast = rigBod.position.x;
 
 		if (direction == 1) {
 
@@ -105,7 +125,7 @@ public class EnemyMovement : MonoBehaviour {
 	}
 	void OnTriggerEnter2D (Collider2D collision) {
 
-		if (collision.gameObject.tag == "PlayerLaser") {
+		if (collision.gameObject.tag == "PlayerLaser" && !invul) {
 			AudioManager.Manager.Play ("Enemy");
 			health--;
 			if (health <= 0) {
@@ -114,10 +134,11 @@ public class EnemyMovement : MonoBehaviour {
 		
 			}
 		}
-		if (collision.gameObject.tag == "Player") {
+		if (collision.gameObject.tag == "Player" && !invul && !CreateGlobals.playerInvul) {
 			CreateGlobals.batterChargeLevel -= 50;
 			health = 0;
 		}
 
 	}
+
 }
