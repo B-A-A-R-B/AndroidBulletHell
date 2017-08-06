@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 
 public class StartGame : MonoBehaviour {
-
+	public static string gameType = "CityScape";
 	//public Button startButton;
 	// Use this for initialization
 	void Start () {
@@ -22,9 +22,20 @@ public class StartGame : MonoBehaviour {
 
 
 	}
-	public void LoadStage() {
+	public void LoadInputSelect() {
+		SceneManager.LoadScene ("InputSelect");
+		StartGame.gameType = "Endless";
+	}
+	public void LoadStageGamePad() {
 
-		SceneManager.LoadScene ("Cityscape");
+		SceneManager.LoadScene (gameType);
+		CreateGlobals.gameInput = true;
+
+	}
+	public void LoadStageKeyBoard() {
+
+		SceneManager.LoadScene (gameType);
+		CreateGlobals.gameInput = false;
 
 	}
 

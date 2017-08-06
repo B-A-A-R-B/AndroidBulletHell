@@ -11,6 +11,7 @@ public class EnemyMovement : MonoBehaviour {
 	public int maxHight = 40;
 	public int maxLow = -40;
 	public int speed = 1;
+	public int maxXPos = 70;
 	protected int health;
 	protected System.Random rand = new System.Random ();
 	public string bulletType = "EnemyBullet"; 
@@ -114,6 +115,11 @@ public class EnemyMovement : MonoBehaviour {
 			}
 
 		}
+
+
+		if (rigBod.transform.position.x > maxXPos)
+			rigBod.transform.position = ((Vector2)rigBod.transform.position) + ((new Vector2(-1,0)) / 4) + moving;
+
 		if (health <= 0) {
 			AudioManager.Manager.Play ("Explosion");
 			//GameObject batt = (GameObject)Instantiate (Resources.Load ("Batteries"));

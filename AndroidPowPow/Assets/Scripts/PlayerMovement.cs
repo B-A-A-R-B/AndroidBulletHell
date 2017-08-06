@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	protected Vector2 moves;
 	protected Rigidbody2D rigBod;
+	public bool gamePad = false; 
 	//public SpriteRenderer sprRndr;
 	public int maxX;
 	public int minX;
@@ -35,7 +36,7 @@ public class PlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if ((Input.GetMouseButtonDown (0))) {
+		if (Input.GetButtonDown("Fire")) {
 
 			GameObject laserProj = (GameObject)Instantiate (Resources.Load ("PlayerLaser"));
 			Vector2 muzzle = rigBod.position;
@@ -46,34 +47,55 @@ public class PlayerMovement : MonoBehaviour {
 
 		}
 
+
 	}
 
 	void FixedUpdate() {
 
-		moves = Vector2.zero;
-
 		if (Input.GetKey ("escape") || Input.GetKeyDown ("escape"))
 			SceneManager.LoadScene ("MainMenu");
 
-		if( Input.GetKey("up") || Input.GetKey("w") )
-			moves.y += 2;
-				
-		if( (Input.GetKey("down")) || (Input.GetKey("s")) )
-			moves.y -= 2;
+		moves = Vector2.zero;
+		if (gamePad) {
 
-				
-		if( (Input.GetKey("left")) || (Input.GetKey("a")) )
-			moves.x -= 2;
-					
-		if( (Input.GetKey("right")) || (Input.GetKey("d")) )
-			moves.x += 2;
-	
+			if (Input.GetAxis ("Vertical") > 0)
+				moves.y += 2;
+
+			if (Input.GetAxis ("Vertical") < 0)
+				moves.y -= 2;
+
+
+			if (Input.GetAxis ("Horizontal") < 0)
+				moves.x -= 2;
+
+			if (Input.GetAxis ("Horizontal") > 0)
+				moves.x += 2;
+
+		} 
+		if(!gamePad) {
+
+			if (Input.GetKey ("up") || Input.GetKey ("w"))
+				moves.y += 2;
+
+			if (Input.GetKey ("down") || Input.GetKey ("s") )
+				moves.y -= 2;
+
+
+			if (Input.GetKey ("left") || Input.GetKey ("a"))
+				moves.x -= 2;
+
+			if (Input.GetKey ("right") || Input.GetKey ("d"))
+				moves.x += 2;
+
+		}
+
 		if (Mathf.Abs (moves.y + rigBod.position.y)	> 39)
-			moves.y -= (rigBod.position.y/ Mathf.Abs(rigBod.position.y)) * 2;
+			moves.y -= (rigBod.position.y / Mathf.Abs (rigBod.position.y)) * 2;
 		moves = moves / 2;
+
 		if(CreateGlobals.bossHere == 1)
 			if (moves.x + rigBod.position.x	> (maxX - 40))
-			moves.x = Mathf.Abs(moves.x) * -1;
+				moves.x = Mathf.Abs(moves.x) * -1;
 			if (moves.x + rigBod.position.x < minX)
 				moves.x = 0;
 		else
@@ -86,9 +108,9 @@ public class PlayerMovement : MonoBehaviour {
 
 	}
 
-	void Movement(Vector2 moveing) {
+	void Movement(Vector2 moving) {
 
-		rigBod.position = rigBod.position + moveing;
+		rigBod.position = rigBod.position + moving;
 
 	}
 }

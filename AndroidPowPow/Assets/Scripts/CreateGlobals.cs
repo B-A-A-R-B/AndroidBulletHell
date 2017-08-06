@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class CreateGlobals : MonoBehaviour {
 
+	public static bool gameInput = false;
 	public static int enemyBulletSpeed = -25;
 	public static int playerLaserSpeed = 9;
 	public static int batterChargeLevel = 100;
@@ -26,6 +27,8 @@ public class CreateGlobals : MonoBehaviour {
 		
 		player = (GameObject)Instantiate (Resources.Load ("Player"));
 		player.transform.position = new Vector2 (-70, 0);
+		PlayerMovement playerScr = player.GetComponent<PlayerMovement>();
+		playerScr.gamePad = gameInput;
 		nextActionTime = Time.time;
 		sprRndrPlayer = player.GetComponent<SpriteRenderer> ();
 

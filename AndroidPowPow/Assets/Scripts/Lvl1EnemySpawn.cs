@@ -7,8 +7,7 @@ public class Lvl1EnemySpawn : MonoBehaviour {
 	List<GameObject> enemiesArray = new List<GameObject>();
 	int phase = 0;
 	protected string checkOne;
-	Vector2 advanceEnemy = new Vector2(-1, 0);
-	// Use this for initialization
+
 	void Start () {
 
 		GameObject enemNew = (GameObject)Instantiate (Resources.Load ("Enemy1"));
@@ -48,13 +47,13 @@ public class Lvl1EnemySpawn : MonoBehaviour {
 
 			switch (phase) {
 
-			/*case 1:
-				GameObject bossNew = new GameObject ();
-				bossNew = (GameObject)Instantiate (Resources.Load ("BawseEnemy"));
-				enemiesArray.Add (bossNew);
+		/*	case 1:
+				GameObject bossNew1 = new GameObject ();
+				bossNew1 = (GameObject)Instantiate (Resources.Load ("BawseEnemy"));
+				enemiesArray.Add (bossNew1);
 				enemiesArray [0].transform.position = new Vector2 (110, 0);
-				break; 
-*/
+				break; */
+
 			case 1:
 				GameObject[] enemNew2 = new GameObject[3];
 				enemNew2 [0] = (GameObject)Instantiate (Resources.Load ("EnemySine"));
@@ -67,6 +66,7 @@ public class Lvl1EnemySpawn : MonoBehaviour {
 				EnemyMovement lomp0 = enemiesArray [0].GetComponent<EnemyMovement> ();
 				lomp0.maxFireTime = 0.1;
 				lomp0.minFireTime = 0.1;
+				lomp0.maxXPos = 60;
 				enemiesArray [1].transform.position = new Vector2 (110, 10);
 				EnemyMovement lomp1 = enemiesArray [1].GetComponent<EnemyMovement> ();
 				lomp1.maxLow = 0;
@@ -84,21 +84,22 @@ public class Lvl1EnemySpawn : MonoBehaviour {
 				enemNew [3] = (GameObject)Instantiate (Resources.Load ("Enemy1"));
 				for (int i = 0; i < enemNew.Length; i++)
 					enemiesArray.Add (enemNew [i]);
-				enemiesArray [0].transform.position = new Vector2 (110, 20);
-				checkOne = enemiesArray [0].name;
+				enemiesArray [0].transform.position = new Vector2 (100, 20);
 				EnemyMovement comp1 = enemiesArray [0].GetComponent<EnemyMovement> ();
 				comp1.maxLow = 0;
-				enemiesArray [1].transform.position = new Vector2 (100, 20);
+				comp1.maxXPos = 60;
+				enemiesArray [1].transform.position = new Vector2 (110, 20);
 				EnemyMovement comp2 = enemiesArray [1].GetComponent<EnemyMovement> ();
 				comp2.maxLow = 0;
-				enemiesArray [2].transform.position = new Vector2 (100, -20);
+				enemiesArray [2].transform.position = new Vector2 (110, -20);
 				EnemyMovement comp3 = enemiesArray [2].GetComponent<EnemyMovement> ();
 				comp3.maxHight = 0;
 				comp3.direction = 1;
-				enemiesArray [3].transform.position = new Vector2 (110, -20);
+				enemiesArray [3].transform.position = new Vector2 (100, -20);
 				EnemyMovement comp4 = enemiesArray [3].GetComponent<EnemyMovement> ();
 				comp4.maxHight = 0;
 				comp4.direction = 1;
+				comp4.maxXPos = 60;
 				break; 
 			
 			case 3:
@@ -110,59 +111,7 @@ public class Lvl1EnemySpawn : MonoBehaviour {
 
 			default:
 				break;
-
-			}
-			
-		}
-
-	}
-
-	void FixedUpdate() {
-
-
-
-		if (phase == 0) {
-			for(int i = 0; i < enemiesArray.Count;  i++)
-				if ((enemiesArray [i].transform.position.x) > 70)
-					enemiesArray [i].transform.position = ((Vector2)enemiesArray [i].transform.position) + (advanceEnemy / 4);
-
-		}
-		if (phase == 1) {
-
-			for (int i = 0; i < enemiesArray.Count; i++) {
-				if (enemiesArray [i] != null) {
-					if ((enemiesArray [i].transform.position.x) > 60 && (enemiesArray[i].name == checkOne))
-						enemiesArray [i].transform.position = ((Vector2)enemiesArray [i].transform.position) + (advanceEnemy / 4);
-					else if ((enemiesArray [i].transform.position.x) > 70)
-						enemiesArray [i].transform.position = ((Vector2)enemiesArray [i].transform.position) + (advanceEnemy / 4);
-				}
 			}
 		}
-		if (phase == 2) {
-
-			for (int i = 0; i < enemiesArray.Count; i++) {
-				if (enemiesArray [i] != null) {
-					if (((enemiesArray [i].transform.position.x) > 58) & (enemiesArray[i].name != checkOne))
-						enemiesArray [i].transform.position = ((Vector2)enemiesArray [i].transform.position) + (advanceEnemy / 4);
-					else if ((enemiesArray [i].transform.position.x) > 70)
-						enemiesArray [i].transform.position = ((Vector2)enemiesArray [i].transform.position) + (advanceEnemy / 4);
-				}
-			}
-
-		}
-		if (phase == 3) {
-
-			for (int i = 0; i < enemiesArray.Count; i++) {
-				if (enemiesArray [i] != null) {
-					if (((enemiesArray [i].transform.position.x) > 58) & (enemiesArray[i].name != checkOne))
-						enemiesArray [i].transform.position = ((Vector2)enemiesArray [i].transform.position) + (advanceEnemy / 4);
-				}
-			}
-
-		}
-			
-			//if ((enemiesArray [0].transform.position.x) > 75)
-				//enemiesArray [0].transform.position = ((Vector2)enemiesArray [0].transform.position) + (advanceEnemy / 4);
-
 	}
 }

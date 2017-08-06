@@ -59,6 +59,7 @@
      <Compile Include="Assets\Scripts\CentripBullet.cs" />
      <Compile Include="Assets\Scripts\CreateGlobals.cs" />
      <Compile Include="Assets\Scripts\DualCentrip.cs" />
+     <Compile Include="Assets\Scripts\EndlessMode.cs" />
      <Compile Include="Assets\Scripts\EnemyBulletMovement.cs" />
      <Compile Include="Assets\Scripts\EnemyCentrip.cs" />
      <Compile Include="Assets\Scripts\EnemyMovement.cs" />

@@ -7,12 +7,16 @@ public class BawseAttackPttrns : MonoBehaviour {
 	Rigidbody2D rigBod;
 	public int startYCent;
 	public int startYNorm;
+	public int maxXPos = 58;
 	private float startYMod = 0f;
 	private bool yUp = false;
 	private float nextActionTime;
 	public float period = 0.5f;
 	private int oneTwo = 0;
 	private int waveAttackY = 0;
+	private int cycleCen = 0;
+	private int cycleNum = 10;
+	private int cyclePos = -1;
 	private int healthMax = 15;
 	private int health;
 	private int lives = 8;
@@ -65,7 +69,7 @@ public class BawseAttackPttrns : MonoBehaviour {
 					oneTwo = 0;
 					break;
 				case 3:
-					startYMod = 0f;
+					//startYMod = 0f;
 					attackPttrnFour ();
 					break;
 				case 4:
@@ -73,10 +77,10 @@ public class BawseAttackPttrns : MonoBehaviour {
 					attackPttrnFour ();
 					break;
 				case 5:
-					attackPttrnOne ();
+					attackPttrnOne (true);
 					break;
 				case 6:
-					attackPttrnOne ();
+					attackPttrnOne (false);
 					break;
 				case 7:
 					attackPttrnTwo ();
@@ -96,23 +100,48 @@ public class BawseAttackPttrns : MonoBehaviour {
 			bawseFace.color = new Color (1f, 1f, 1f, 1f);
 			started = true;
 		}
-
+		if ( rigBod.transform.position.x > maxXPos)
+			rigBod.transform.position = ((Vector2)rigBod.transform.position) + ((new Vector2(-1,0)) / 4);
 	}
 
-	void attackPttrnOne () {
+	void attackPttrnOne (bool modVers) {
 
 		GameObject[] bulletProj = new GameObject[4];
 		DualCentrip[] bulletType = new DualCentrip[4];
-		for (int i = 0; i < bulletProj.Length; i++) {
+		if (!modVers)
+			for (int i = 0; i < bulletProj.Length; i++) {
 
-			bulletProj[i] = (GameObject) Instantiate(Resources.Load("EnemyBullet4"));
-			bulletProj [i].transform.position = rigBod.position;
-			bulletType [i] = bulletProj [i].GetComponent<DualCentrip> ();
-			bulletType [i].startY = startYCent * (i + 1);
-			//startY += startY;
-			
-		}
+				bulletProj [i] = (GameObject)Instantiate (Resources.Load ("EnemyBullet4"));
+				bulletProj [i].transform.position = rigBod.position;
+				bulletType [i] = bulletProj [i].GetComponent<DualCentrip> ();
+				bulletType [i].startY = startYCent * (i + 1);
+				bulletType [i].startPos = 0;
+				//startY += startY;
 
+
+			}
+		else 
+			for (int i = 0; i < bulletProj.Length; i++) {
+
+				bulletProj [i] = (GameObject)Instantiate (Resources.Load ("EnemyBullet4"));
+				bulletProj [i].transform.position = rigBod.position;
+				bulletType [i] = bulletProj [i].GetComponent<DualCentrip> ();
+				bulletType [i].startY = startYCent * (i + 1);
+				bulletType [i].startPos = cyclePos;
+				//startY += startY
+
+			}
+		if (cycleCen < cycleNum) {
+			cycleCen++;
+			cyclePos = -1;
+		} else if (cycleCen < cycleNum*2) {
+			cycleCen++;
+			cyclePos = 0;
+		} else if (cycleCen < cycleNum*3) {
+			cycleCen++;
+			cyclePos = 1;
+		} else
+			cycleCen = 0;
 	}
 	void attackPttrnTwo () {
 
@@ -155,7 +184,7 @@ public class BawseAttackPttrns : MonoBehaviour {
 	void attackPttrnFour (){
 		switch (oneTwo) {
 		case 0:
-			attackPttrnOne ();
+			attackPttrnOne (false);
 			oneTwo = 1;
 			break;
 		case 1:
@@ -175,6 +204,8 @@ public class BawseAttackPttrns : MonoBehaviour {
 			if (health <= 0) {
 				lives--;
 				health = healthMax;
+				cycleCen = 0;
+				cyclePos = -1;
 				GameObject batt = (GameObject)Instantiate (Resources.Load ("Batteries"));
 				if (CreateGlobals.player != null) {
 					Vector2 battSpawn = new Vector2 (rigBod.position.x, CreateGlobals.player.transform.position.y);
