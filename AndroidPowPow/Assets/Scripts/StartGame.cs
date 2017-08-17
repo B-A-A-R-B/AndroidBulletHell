@@ -24,7 +24,13 @@ public class StartGame : MonoBehaviour {
 	}
 	public void LoadInputSelect() {
 		SceneManager.LoadScene ("InputSelect");
-		StartGame.gameType = "Endless";
+		StartGame.gameType = "CityScape";
+	}
+	public void LoadInputSelectEndless() {
+		if (Tracker.endlessUnlocked) {
+			SceneManager.LoadScene ("InputSelect");
+			StartGame.gameType = "Endless";
+		}
 	}
 	public void LoadStageGamePad() {
 

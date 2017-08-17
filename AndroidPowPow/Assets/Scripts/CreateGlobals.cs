@@ -38,7 +38,8 @@ public class CreateGlobals : MonoBehaviour {
 	void Update () {
 
 		if ((r = Input.GetKey ("r") || Input.GetKeyDown ("r")) && deathCountDown >= 1) {
-			SceneManager.LoadScene ("Cityscape");
+			Scene current = SceneManager.GetActiveScene ();
+			SceneManager.LoadScene (current.name);
 			deathCountDown = 0;
 			bossHere = 0;
 		}

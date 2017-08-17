@@ -54,6 +54,7 @@ public class BawseAttackPttrns : MonoBehaviour {
 				case 0:
 					AudioManager.Manager.Play ("Explosion");
 					Destroy (this.gameObject);
+					Tracker.endlessUnlocked = true;
 					SceneManager.LoadScene ("WinScene");
 					break;
 				case 1:

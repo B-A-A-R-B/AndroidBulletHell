@@ -72,6 +72,7 @@
      <Compile Include="Assets\Scripts\SineEnemy.cs" />
      <Compile Include="Assets\Scripts\SineWaveBullet.cs" />
      <Compile Include="Assets\Scripts\StartGame.cs" />
+     <Compile Include="Assets\Scripts\Tracker.cs" />
      <Compile Include="Assets\Scripts\UpdateCharge.cs" />
      <None Include="Assets\Scenes\CreationFile.txt" />
      <None Include="Assets\FrickinStupidUnity_HailTheFlames.txt" />
